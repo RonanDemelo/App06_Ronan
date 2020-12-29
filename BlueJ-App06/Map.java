@@ -42,4 +42,9 @@ public class Map
         
         //might need to change this
     }
+    
+    public Room getStart()
+    {
+        return startRoom;
+    }
 }
