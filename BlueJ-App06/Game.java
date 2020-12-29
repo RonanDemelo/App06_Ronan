@@ -97,6 +97,10 @@ public class Game
             case SEARCH:
             searchRoom(command);
             break;
+            
+            case TAKE:
+            takeItem(command);
+            break;
 
             case QUIT:
             wantToQuit = quit(command);
@@ -157,6 +161,11 @@ public class Game
     private void searchRoom(Command command) 
     {
         System.out.println("Items found: " + currentRoom.getItem());
+    }
+    
+    private void takeItem(Command command)
+    {
+        Items item = currentRoom.getItem();
     }
 
     /** 
