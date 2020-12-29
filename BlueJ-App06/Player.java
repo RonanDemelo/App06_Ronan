@@ -47,6 +47,16 @@ public class Player
         return name;
     }
     
+    public void addItem(Items item)
+    {
+        items.add(item);
+        score+= 10;
+        if(item == Items.FOOD)
+        {
+            health += 10;
+        }
+    }
+    
     public void print()
     {
         System.out.println("\n Moves: " + moves + " " 
