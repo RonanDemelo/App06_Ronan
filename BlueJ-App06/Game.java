@@ -19,9 +19,10 @@
 
 public class Game 
 {
+    private Map map;
+    private Player player;
     private Parser parser;
     private Room currentRoom;
-    private Map map;
 
     /**
      * Create the game and initialise its internal map.
