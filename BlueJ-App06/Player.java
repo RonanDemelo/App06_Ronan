@@ -18,4 +18,14 @@ public class Player
         moves = 0;
         score = 0;
     }
+    
+    public int getScore()
+    {
+        return score;
+    }
+    
+    public void increaseScore(int amount)
+    {
+        score = score + amount;
+    }
 }
