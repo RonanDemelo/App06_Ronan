@@ -94,5 +94,10 @@ public class Room
     {
         return exits.get(direction);
     }
+    
+    public void additem(Items item)
+    {
+        this.item = item;
+    }
 }
 
