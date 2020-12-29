@@ -32,6 +32,7 @@ public class Game
         parser = new Parser();
         map = new Map();
         currentRoom = map.getStart();
+        player = new Player("Nanor");
     }
 
     /**
