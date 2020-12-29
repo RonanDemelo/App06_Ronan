@@ -99,7 +99,7 @@ public class Game
             break;
             
             case TAKE:
-            takeItem(command);
+            takeItem();
             break;
 
             case QUIT:
@@ -163,9 +163,10 @@ public class Game
         System.out.println("Items found: " + currentRoom.getItem());
     }
     
-    private void takeItem(Command command)
+    private void takeItem()
     {
         Items item = currentRoom.getItem();
+        player.addItem(item);
     }
 
     /** 
