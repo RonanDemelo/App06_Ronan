@@ -94,6 +94,10 @@ public class Game
             goRoom(command);
             break;
 
+            case SEARCH:
+            searchRoom(command);
+            break;
+
             case QUIT:
             wantToQuit = quit(command);
             break;
@@ -140,8 +144,19 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
+            player.move();
+            player.print();
             System.out.println(currentRoom.getLongDescription());
         }
+    }
+
+    /** 
+     * Try to go in one direction. If there is an exit, enter the new
+     * room, otherwise print an error message.
+     */
+    private void searchRoom(Command command) 
+    {
+        System.out.println("Items found: " + currentRoom.getItem());
     }
 
     /** 
