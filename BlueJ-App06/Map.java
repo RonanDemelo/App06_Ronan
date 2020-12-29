@@ -9,6 +9,11 @@ public class Map
 {
     private Room startRoom;
     
+    public Map()
+    {
+        createRooms();
+    }
+    
     /**
      * Create all the rooms and link their exits together.
      */
