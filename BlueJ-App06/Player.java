@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 /**
  * Write a description of class PLayer here.
  *
@@ -11,9 +12,12 @@ public class Player
     private int score;
     private int moves;
     
+    private ArrayList<Items> items;
+    
     public Player(String name)
     {
         this.name = name;
+        items = new ArrayList<Items>();
         health = 100;
         moves = 0;
         score = 0;
