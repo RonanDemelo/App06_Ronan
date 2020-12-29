@@ -34,6 +34,7 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
+        item = Items.NONE;
     }
 
     /**
