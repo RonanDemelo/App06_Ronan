@@ -28,4 +28,13 @@ public class Player
     {
         score = score + amount;
     }
+    
+    public void move()
+    {
+        moves++;
+        if(score > 0)
+        {
+            score--;
+        }
+    }
 }
