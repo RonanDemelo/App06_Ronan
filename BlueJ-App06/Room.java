@@ -99,5 +99,10 @@ public class Room
     {
         this.item = item;
     }
+    
+    public Items getItem()
+    {
+        return item;
+    }
 }
 

@@ -34,6 +34,7 @@ public class Map
         outside.setExit("west", pub);
 
         theater.setExit("west", outside);
+        theater.additem(Items.FOOD);
 
         pub.setExit("east", outside);
 
