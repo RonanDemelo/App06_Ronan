@@ -37,4 +37,16 @@ public class Player
             score--;
         }
     }
+    
+    public String getName()
+    {
+        return name;
+    }
+    
+    public void print()
+    {
+        System.out.println("\n Moves: " + moves + " " 
+        + name + " Health: " + health 
+        + " Score: " + score + "\n");
+    }
 }
