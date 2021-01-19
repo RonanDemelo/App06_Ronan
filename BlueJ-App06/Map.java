@@ -19,34 +19,89 @@ public class Map
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room YourCell, Hallway1, Hallway2, Hallway3, Hallway4, Cell2, JanitorCloset, GuardRoom, Vent, MaintinaceRoom, Cafeteria, 
+        Exit, Shower, Sewers, Courtyard, Outside;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        YourCell = new Room("in your cell", false);
+        Cell2 = new Room("in the nahours cell", false);
+        Hallway1 = new Room("in the 1st hallway", true);
+        Hallway2 = new Room("in the 2nd hallway", false);
+        Hallway3 = new Room("in the 3rd hallway", true);
+        Hallway4 = new Room("in the 4th hallway", false);
+        GuardRoom = new Room("in the Guardroom", false);
+        MaintinaceRoom = new Room("in the Maintinance room", false);
+        JanitorCloset = new Room("in the Janitors Closet", false);
+        Shower = new Room("in the Showers", false);
+        Courtyard = new Room("in the Courtyard", false);
+        Cafeteria = new Room("in the Cafeteria", false);
+        Sewers = new Room("in the Sewers", false);
+        Outside = new Room("outside", false);
+        Exit = new Room("at the prison entrence", false);
+        Vent = new Room("crawling through the vents", false);
         
-        // initialise room exits
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-
-        theater.setExit("west", outside);
-        theater.additem(Items.FOOD);
-
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-
-        office.setExit("west", lab);
-
-        startRoom = outside;  // start game outside 
+        //item creation
+        Item Screwdriver = new Item("Screwdriver");
+        MaintinaceRoom.additem(Screwdriver);
         
+        Item Food = new Item("Food");
+        Cafeteria.additem(Food);
+        Food.amount = 3;
         
-        //might need to change this
+        Item Water = new Item("Water");
+        Cafeteria.additem(Water);
+        
+        Item Knife = new Item("Knife");
+        Cafeteria.additem(Knife);
+        
+        Item JanitorKey = new Item ("JanitorKey");
+        GuardRoom.additem(JanitorKey);
+        
+        Item Ladder = new Item ("Ladder");
+        JanitorCloset.additem(Ladder);
+        
+        Item Money = new Item ("Money");
+        GuardRoom.additem(Money);
+        
+        //room exit creation
+        YourCell.setExit("south", Hallway1);
+        
+        Hallway1.setExit("north", YourCell);
+        Hallway1.setExit("east", Hallway2);
+        Hallway1.setExit("south", Cell2);
+        
+        Cell2.setExit("north", Hallway1);
+        Cell2.setExit("south", Vent);
+        
+        Hallway2.setExit("north", JanitorCloset);
+        Hallway2.setExit("east", Hallway3);
+        Hallway2.setExit("south", GuardRoom);
+        Hallway2.setExit("west", Hallway1);
+        
+        GuardRoom.setExit("north", Hallway2);
+        GuardRoom.setExit("west", Vent);
+        
+        Hallway3.setExit("north", JanitorCloset);
+        Hallway3.setExit("east", Hallway4);
+        Hallway3.setExit("south", Shower);
+        Hallway3.setExit("west", Hallway2);
+        
+        Hallway4.setExit("north", MaintinaceRoom);
+        Hallway4.setExit("east", Exit);
+        Hallway4.setExit("south", Courtyard);
+        Hallway4.setExit("west", Hallway3);
+        
+        Shower.setExit("north", Hallway4);
+        Shower.setExit("south", Sewers);
+        
+        JanitorCloset.setExit("south", Hallway3);
+        
+        Courtyard.setExit("north", Hallway4);
+        
+        Vent.setExit("north", Cell2);
+        Vent.setExit("east", GuardRoom);
+        
+        startRoom = YourCell;  // start game in your cell 
     }
     
     public Room getStart()

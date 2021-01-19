@@ -23,20 +23,25 @@ public class Room
     // stores exits of this room.
     private HashMap<String, Room> exits;
     
-    private Items item;
+    private Item item;
+    
+    // variables for locked doors
+    public boolean locked;
+    
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description) 
+    public Room(String description, boolean locked) 
     {
         this.description = description;
         exits = new HashMap<>();
-        item = Items.NONE;
+        item = null;
+        this.locked = locked;
     }
-
+    
     /**
      * Define an exit from this room.
      * @param direction The direction of the exit.
@@ -95,12 +100,12 @@ public class Room
         return exits.get(direction);
     }
     
-    public void additem(Items item)
+    public void additem(Item item)
     {
         this.item = item;
     }
     
-    public Items getItem()
+    public Item getItem()
     {
         return item;
     }

@@ -23,6 +23,7 @@ public class Game
     private Player player;
     private Parser parser;
     private Room currentRoom;
+    private Room nextRoom;
 
     /**
      * Create the game and initialise its internal map.
@@ -32,7 +33,7 @@ public class Game
         parser = new Parser();
         map = new Map();
         currentRoom = map.getStart();
-        player = new Player("Nanor");
+        player = new Player("Player");
     }
 
     /**
@@ -97,9 +98,17 @@ public class Game
             case SEARCH:
             searchRoom(command);
             break;
-            
+
             case TAKE:
             takeItem();
+            break;
+
+            case ITEMS:
+            listInventory();
+            break;
+
+            case USE:
+            useItem(command);
             break;
 
             case QUIT:
@@ -119,7 +128,7 @@ public class Game
     private void printHelp() 
     {
         System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("You are in a Prison.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
@@ -139,18 +148,27 @@ public class Game
         }
 
         String direction = command.getSecondWord();
+        player.useEnergy();
 
         // Try to leave current room.
-        Room nextRoom = currentRoom.getExit(direction);
+        nextRoom = currentRoom.getExit(direction);
 
-        if (nextRoom == null) {
+        if (nextRoom == null) 
+        {
             System.out.println("There is no door!");
         }
         else {
-            currentRoom = nextRoom;
-            player.move();
-            player.print();
-            System.out.println(currentRoom.getLongDescription());
+            if (nextRoom.locked != true)
+            {
+                currentRoom = nextRoom;
+                player.move();
+                player.print();
+                System.out.println(currentRoom.getLongDescription());
+            }
+            else
+            {
+                System.out.println("This door is locked");
+            }
         }
     }
 
@@ -160,15 +178,72 @@ public class Game
      */
     private void searchRoom(Command command) 
     {
-        System.out.println("Items found: " + currentRoom.getItem());
-    }
-    
-    private void takeItem()
-    {
-        Items item = currentRoom.getItem();
-        player.addItem(item);
+        Item item = currentRoom.getItem();
+        System.out.println("Items found: " + item.getName());
     }
 
+    private void takeItem()
+    {
+        Item item = currentRoom.getItem();       
+        if (item == null)
+        {
+            System.out.println("No items found in " + currentRoom);
+        }
+        else
+        {
+            if (item.amount == 1)
+            {
+                player.addItem(item);
+                System.out.println(item.getName() + " taken.");
+                item.amount = item.amount - 1;
+            }
+            else
+            {
+                System.out.println("You already have that item");
+            }
+        }
+    }
+
+    private void listInventory()
+    {
+        player.Inventory();
+    }
+    // current dosnt work VVVVV
+    private void useItem(Command command)
+    {
+        if(!command.hasSecondWord()) 
+        {
+            // check for valid input
+            System.out.println("use what?");
+            return;
+        }
+        String userItem = command.getSecondWord(); 
+        userItem.toLowerCase();
+        String item = player.getItem(userItem);
+        
+        if (item == "lockpick")
+        {
+            unlockDoor("lockpick");
+        }
+        else if (userItem =="food")
+        {
+            player.setEnergy(50);
+        }
+        else
+        {
+            System.out.println("not work");
+        }
+    }
+    
+    private void unlockDoor(String Item)
+    {
+        if (nextRoom.locked = true)
+        {
+            nextRoom.locked = false;
+            player.removeItem(Item);
+        }
+    }
+    
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.

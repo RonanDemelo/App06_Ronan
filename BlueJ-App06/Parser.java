@@ -67,4 +67,12 @@ public class Parser
     {
         commands.showAll();
     }
+    
+    public String getInput()
+    {
+        System.out.print("> ");         // print prompt
+        String inputLine = reader.nextLine();
+
+        return inputLine;
+    }
 }

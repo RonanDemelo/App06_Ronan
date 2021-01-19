@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 /**
  * Write a description of class PLayer here.
@@ -8,31 +9,32 @@ import java.util.ArrayList;
 public class Player
 {
     private String name;
-    private int health;
+    private int energy;
     private int score;
     private int moves;
-    
-    private ArrayList<Items> items;
-    
+    private Room currentRoom;
+
+    public ArrayList<Item> items;
+
     public Player(String name)
     {
         this.name = name;
-        items = new ArrayList<Items>();
-        health = 100;
+        items = new ArrayList<Item>();
+        energy = 100;
         moves = 0;
         score = 0;
     }
-    
+
     public int getScore()
     {
         return score;
     }
-    
+
     public void increaseScore(int amount)
     {
         score = score + amount;
     }
-    
+
     public void move()
     {
         moves++;
@@ -41,26 +43,78 @@ public class Player
             score--;
         }
     }
-    
+
     public String getName()
     {
         return name;
     }
-    
-    public void addItem(Items item)
+
+    public int getHealth()
+    {
+        return score;
+    }
+
+    public void setEnergy(int addEnergy)
+    {
+        if (energy >= 0 && energy <= 90) 
+        {
+            energy = energy + addEnergy;
+        }
+        else 
+        {
+            energy = 100;
+        }
+    }
+
+    public void addItem(Item item)
     {
         items.add(item);
         score+= 10;
-        if(item == Items.FOOD)
+    }
+
+    public void Inventory()
+    {
+        System.out.println("You currently have:");
+        for (Item items : items) 
         {
-            health += 10;
+            System.out.println(items.name);
         }
     }
-    
+
+    public void removeItem(String name)
+    {
+        for (Item items : items) 
+        {
+            if (items.name == name)
+            {
+                items.remove(1);
+            }
+        }
+    }
+
+    public String getItem(String name)
+    {
+        for(Item item : items) 
+        {
+            if(item.getName().equals(name)) 
+            {
+                return item.getName();
+            }
+        }
+
+        // if we get to this point no item with this name exists.
+        return null;
+    }
+
+    public void useEnergy()
+    {
+        energy = energy - 5;
+    }
+
     public void print()
     {
         System.out.println("\n Moves: " + moves + " " 
-        + name + " Health: " + health 
-        + " Score: " + score + "\n");
+            + name + " Energy: " + energy 
+            + " Score: " + score + "\n");
     }
 }
