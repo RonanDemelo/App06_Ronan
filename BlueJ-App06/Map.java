@@ -25,19 +25,19 @@ public class Map
         // create the rooms
         YourCell = new Room("in your cell", false);
         Cell2 = new Room("in the nahours cell", false);
-        Hallway1 = new Room("in the 1st hallway", true);
+        Hallway1 = new Room("in the 1st hallway", false);
         Hallway2 = new Room("in the 2nd hallway", false);
-        Hallway3 = new Room("in the 3rd hallway", true);
+        Hallway3 = new Room("in the 3rd hallway", false);
         Hallway4 = new Room("in the 4th hallway", false);
         GuardRoom = new Room("in the Guardroom", false);
-        MaintinaceRoom = new Room("in the Maintinance room", false);
+        MaintinaceRoom = new Room("in the Maintinance room", true);
         JanitorCloset = new Room("in the Janitors Closet", false);
         Shower = new Room("in the Showers", false);
-        Courtyard = new Room("in the Courtyard", false);
+        Courtyard = new Room("in the Courtyard", true);
         Cafeteria = new Room("in the Cafeteria", false);
-        Sewers = new Room("in the Sewers", false);
+        Sewers = new Room("in the Sewers", true);
         Outside = new Room("outside", false);
-        Exit = new Room("at the prison entrence", false);
+        Exit = new Room("at the prison entrence", true);
         Vent = new Room("crawling through the vents", false);
         
         //item creation
