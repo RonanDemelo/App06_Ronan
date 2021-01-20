@@ -14,6 +14,9 @@ import java.util.Iterator;
  * 
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
+ * 
+ * Modified and extended by Will Deeley, Ronan Demelo and James Pjetri
+ * Version 2021.01.14
  */
 
 public class Room 
@@ -25,7 +28,7 @@ public class Room
     
     private Item item;
     
-    // variables for locked doors
+    //variable for locked exits
     public boolean locked;
     
     /**
@@ -100,6 +103,9 @@ public class Room
         return exits.get(direction);
     }
     
+    /** 
+     * adds items to a room
+     */
     public void additem(Item item)
     {
         this.item = item;

@@ -14,7 +14,8 @@
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
  * 
- * Modified and extended by Your name
+ * Modified and extended by Will Deeley, Ronan Demelo and James Pjetri
+ * Version 2021.01.14
  */
 
 public class Game 
@@ -38,6 +39,7 @@ public class Game
 
     /**
      *  Main play routine.  Loops until end of play.
+     *  added check for win/lose condition
      */
     public void play() 
     {            
@@ -52,6 +54,16 @@ public class Game
         {
             Command command = parser.getCommand();
             finished = processCommand(command);
+            if (player.energy == 0)
+            {
+                System.out.println("You have run out of energy and are caught by the guards. you lose");
+                finished = true;
+            }
+            else if (currentRoom.getShortDescription() == "outside")
+            {
+                System.out.println("Congragulations, you have escaped. You win");
+                finished = true;
+            }
         }
 
         System.out.println("Thank you for playing.  Good bye.");
@@ -182,6 +194,9 @@ public class Game
         System.out.println("Items found: " + item.getName());
     }
 
+    /** 
+     * Methed to allow players to take items and reduce the items in the world, making them finite
+     */
     private void takeItem()
     {
         Item item = currentRoom.getItem();       
@@ -191,7 +206,7 @@ public class Game
         }
         else
         {
-            if (item.amount == 1)
+            if (item.amount != 0)
             {
                 player.addItem(item);
                 System.out.println(item.getName() + " taken.");
@@ -204,11 +219,17 @@ public class Game
         }
     }
 
+    /** 
+     * lists items player has currently taken
+     */
     private void listInventory()
     {
         player.Inventory();
     }
-    // current dosnt work VVVVV
+    
+    /** 
+     * allows a player to use an item, and outputs accordingly
+     */
     private void useItem(Command command)
     {
         if(!command.hasSecondWord()) 
@@ -219,23 +240,94 @@ public class Game
         }
         String userItem = command.getSecondWord(); 
         userItem.toLowerCase();
-        String item = player.getItem(userItem);
+        String item = player.getItemName(userItem);
         
-        if (item == "lockpick")
+        if (item == "Lockpick")
         {
-            unlockDoor("lockpick");
+            unlockDoorYourCell("Lockpick");
         }
-        else if (userItem =="food")
+        else if (item == "Janitorkey")
         {
-            player.setEnergy(50);
+            unlockDoorJanitorCloset("Janitorkey");
+        }
+        else if (item == "Screwdriver")
+        {
+            unlockDoorSewers("Screwdriver");
+        }
+        else if (item == "Ladder")
+        {
+            unlockDoorOutside("Ladder");
+        }
+        else if (item == "Knife")
+        {
+            unlockDoorExit("Knife");
+        }
+        else if (userItem =="Food")
+        {
+            player.setEnergy(20);
+        }
+        else if (userItem =="Water")
+        {
+            player.setEnergy(10);
         }
         else
         {
-            System.out.println("not work");
+            System.out.println("You do not have that item");
         }
     }
     
-    private void unlockDoor(String Item)
+    /** 
+     * uses lockpicks to open the player cell. removes the item from the player inventory
+     */
+    private void unlockDoorYourCell(String Item)
+    {
+        if (nextRoom.locked = true)
+        {
+            nextRoom.locked = false;
+            player.removeItem(Item);
+        }
+    }
+    
+    /** 
+     * uses the Janitor key to open the Janitor Closet. removes the item from the player inventory
+     */
+    private void unlockDoorJanitorCloset(String Item)
+    {
+        if (nextRoom.locked = true)
+        {
+            nextRoom.locked = false;
+            player.removeItem(Item);
+        }
+    }
+    
+    /** 
+     * uses the Screwdriver item to open the Sewers . removes the item from the player inventory
+     */
+    private void unlockDoorSewers(String Item)
+    {
+        if (nextRoom.locked = true)
+        {
+            nextRoom.locked = false;
+            player.removeItem(Item);
+        }
+    }
+    
+    /** 
+     * uses the Ladder item to open the outside room. removes the item from the player inventory
+     */
+    private void unlockDoorOutside(String Item)
+    {
+        if (nextRoom.locked = true)
+        {
+            nextRoom.locked = false;
+            player.removeItem(Item);
+        }
+    }
+    
+    /** 
+     * uses the knife item to open the exit room. removes the item from the player inventory
+     */
+    private void unlockDoorExit(String Item)
     {
         if (nextRoom.locked = true)
         {

@@ -5,6 +5,9 @@
  *
  * @author Derek Peacock
  * @version 0.1
+ * 
+ * Modified and extended by Will Deeley, Ronan Demelo and James Pjetri
+ * Version 2021.01.14
  */
 public class Program
 {

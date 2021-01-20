@@ -2,8 +2,8 @@
 /**
  * Enumeration class Items - write a description of the enum class here
  *
- * @author (your name here)
- * @version (version number or date here)
+ * Authors by Will Deeley, Ronan Demelo and James Pjetri
+ * Version 2021.01.14
  */
 public class Item
 {
@@ -18,10 +18,10 @@ public class Item
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public Item(String name)
+    public Item(String name, int amount)
     {
         this.name = name;
-        amount = 1;
+        this.amount = amount;
     }
     
     public String getName()
