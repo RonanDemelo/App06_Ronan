@@ -1,0 +1,144 @@
+   1-9
+Program.main();
+
+Welcome to the World of Zuul!
+World of Zuul is a new, incredibly boring adventure game.
+Type 'help' if you need help.
+
+You are in your cell.
+Exits: south
+> go south
+This door is locked
+> search
+Items found: Lockpick
+> use lockpick
+You do not have that item
+> take lockpick
+Lockpick taken.
+> use lockpick
+You do not have that item
+> use LOCKPICK
+You do not have that item
+> use Lockpick
+> Go south
+I don't know what you mean...
+> go south
+
+ Moves: 1 Player Energy: 90 Score: 9
+
+You are in the 1st hallway.
+Exits: east south north
+
+   10 - 12
+
+go north
+
+ Moves: 4 Player Energy: 75 Score: 6
+
+You are in your cell.
+Exits: south
+> go south
+
+ Moves: 5 Player Energy: 70 Score: 5
+
+You are in the 1st hallway.
+Exits: east south north
+> go east
+
+ Moves: 6 Player Energy: 65 Score: 4
+
+You are in the 2nd hallway.
+Exits: east north west
+> go west
+
+ Moves: 7 Player Energy: 60 Score: 3
+
+You are in the 1st hallway.
+Exits: east south north
+> 
+
+  13 - 14
+
+Moves: 7 Player Energy: 60 Score: 13
+
+You are at the prison entrence.
+Exits: east
+> go east
+This door is locked
+> use knife
+You do not have that item
+> use Knife
+> go east
+
+ Moves: 8 Player Energy: 50 Score: 12
+
+You are outside.
+Exits:
+Congragulations, you have escaped. You win
+Thank you for playing.  Good bye.
+Program.main();
+
+Welcome to the World of Zuul!
+World of Zuul is a new, incredibly boring adventure game.
+Type 'help' if you need help.
+
+You are in your cell.
+Exits: south
+> quit
+Thank you for playing.  Good bye.
+
+  15
+
+Welcome to the World of Zuul!
+World of Zuul is a new, incredibly boring adventure game.
+Type 'help' if you need help.
+
+You are in your cell.
+Exits: south
+> take picklock
+Lockpick taken.
+> go south
+This door is locked
+> use Lockpick
+> go south
+
+ Moves: 1 Player Energy: 0 Score: 9
+
+You are in the 1st hallway.
+Exits: east south north
+You have run out of energy and are caught by the guards. you lose
+Thank you for playing.  Good bye.
+
+   16
+
+You are in the Cafeteria.
+Exits: south
+> search
+Items found: Knife
+> quit
+Thank you for playing.  Good bye.
+
+  17 - 18
+go north
+There is no door!
+> take lockpick
+Lockpick taken.
+> items
+You currently have:
+Lockpick
+> 
+
+ 19 - 20
+> items
+You currently have:
+Knife
+> use Knife
+> go south
+
+ Moves: 7 Player Energy: 50 Score: 13
+
+You are in the Sewers.
+Exits: east north
+> quit
+Thank you for playing.  Good bye.
+   
